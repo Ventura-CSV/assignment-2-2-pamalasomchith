@@ -7,7 +7,7 @@ import re
 def test_main_1():
     captureOut = io.StringIO()
     sys.stdout = captureOut
-    datastr = '40 \n 60'
+    datastr = '23'
     sys.stdin = io.StringIO(datastr)
 
     main.main()
@@ -16,15 +16,7 @@ def test_main_1():
     lines = captureOut.getvalue().split('\n')
     print(lines)
 
-    res = re.search('[\w,\W]*100[\w,\W]*', lines[0])
-    assert res != None
-    print(res.group())
-
-    res = re.search('[\w,\W]*40[\w,\W]*60[\w,\W]*', lines[1])
-    assert res != None
-    print(res.group())
-
-    res = re.search('[\w,\W]*40\.00[\w,\W]*60\.00[\w,\W]*', lines[2])
+    res = re.search('[\w,\W]*73\.40[\w,\W]*', lines[0])
     assert res != None
     print(res.group())
 
@@ -32,7 +24,7 @@ def test_main_1():
 def test_main_2():
     captureOut = io.StringIO()
     sys.stdout = captureOut
-    datastr = '10 \n 20'
+    datastr = '35'
     sys.stdin = io.StringIO(datastr)
 
     main.main()
@@ -41,14 +33,6 @@ def test_main_2():
     lines = captureOut.getvalue().split('\n')
     print(lines)
 
-    res = re.search('[\w,\W]*30[\w,\W]*', lines[0])
-    assert res != None
-    print(res.group())
-
-    res = re.search('[\w,\W]*10[\w,\W]*20[\w,\W]*', lines[1])
-    assert res != None
-    print(res.group())
-
-    res = re.search('[\w,\W]*33\.33[\w,\W]*66\.67[\w,\W]*', lines[2])
+    res = re.search('[\w,\W]*95[\w,\W]*', lines[0])
     assert res != None
     print(res.group())
