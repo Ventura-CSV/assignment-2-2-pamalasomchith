@@ -10,15 +10,19 @@ def test_main_1():
     datastr = '23'
     sys.stdin = io.StringIO(datastr)
 
-    main.main()
+    c, f = main.main()
     sys.stdout = sys.__stdout__
     print('Captured ', captureOut.getvalue())
     lines = captureOut.getvalue().split('\n')
     print(lines)
 
-    res = re.search(r'[\w,\W]*73\.40[\w,\W]*', lines[0])
-    assert res != None
-    print(res.group())
+    # res = re.search(r'[\w,\W]*73\.40[\w,\W]*', lines[0])
+    # assert res != None
+    # print(res.group())
+    cs = f'{c:.2f}'
+    fs = f'{f:.2f}'
+    assert cs == '23.00'
+    assert fs == '73.40'
 
 
 def test_main_2():
@@ -27,12 +31,16 @@ def test_main_2():
     datastr = '35'
     sys.stdin = io.StringIO(datastr)
 
-    main.main()
+    c, f = main.main()
     sys.stdout = sys.__stdout__
     print('Captured ', captureOut.getvalue())
     lines = captureOut.getvalue().split('\n')
     print(lines)
 
-    res = re.search(r'[\w,\W]*95[\w,\W]*', lines[0])
-    assert res != None
-    print(res.group())
+    cs = f'{c:.2f}'
+    fs = f'{f:.2f}'
+    assert cs == '35.00'
+    assert fs == '95.00'
+    # res = re.search(r'[\w,\W]*95[\w,\W]*', lines[0])
+    # assert res != None
+    # print(res.group())
