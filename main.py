@@ -8,7 +8,7 @@ def main():
     celsius = int((input("Enter the temperature in Celsius: ")))
     fahrenheit = (1.8 * celsius) + 32
     
-    print("Farenheit:", fahrenheit)
+    print(f'Farenheit: \t {fahrenheit:.2f}')
 
     """
     ########################################
