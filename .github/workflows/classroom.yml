@@ -1,6 +1,6 @@
 name: Autograding Tests
 'on':
-- workflow_dispatch
+- push
 - repository_dispatch
 permissions:
   checks: write
@@ -13,16 +13,16 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-    - name: T
-      id: t
+    - name: PT
+      id: pt
       uses: classroom-resources/autograding-python-grader@v1
       with:
         timeout: 10
         max-score: 5
-        setup-command: sudo -H pip3 install pytest
+        setup-command: pip install pytest
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
-        T_RESULTS: "${{steps.t.outputs.result}}"
+        PT_RESULTS: "${{steps.pt.outputs.result}}"
       with:
-        runners: t
+        runners: pt
